@@ -18,4 +18,19 @@ class ApiService {
       print(e);
     }
   }
+
+  ///获取广场数据
+  getSquareData(int _page) async {
+    try {
+      Response response = await dio.get(Apis.SQUARE_LIST + "/$_page/json");
+      int code = response.statusCode;
+      if (code == 200) {
+        return response;
+      } else {
+        throw Exception('网络异常');
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 }
