@@ -4,7 +4,7 @@ import 'package:flutterapp/data/api/apis.dart';
 class ApiService {
   Dio dio = new Dio();
 
-  ///获取轮播网络的数据
+  ///获取轮播网络数据
   getSwipersData() async {
     try {
       Response response = await dio.get(Apis.HOME_BANNER);
