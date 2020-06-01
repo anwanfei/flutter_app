@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapp/ui/knowledge_tree_screen.dart';
+import 'package:flutterapp/ui/navigation_screen.dart';
 
 class KnowlegePage extends StatefulWidget {
   @override
@@ -8,11 +10,38 @@ class KnowlegePage extends StatefulWidget {
   }
 }
 
-class _KnowlegePage extends State<KnowlegePage> {
+class _KnowlegePage extends State<KnowlegePage> with TickerProviderStateMixin {
+  TabController _tabControlor;
+
+  List<Tab> tabs = [
+    Tab(
+      text: '体系',
+    ),
+    Tab(
+      text: '导航',
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('knowlegepage'),
+    _tabControlor = new TabController(length: tabs.length, vsync: this);
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          Container(
+            color: Colors.red,
+            child: TabBar(
+                indicatorColor: Colors.white,
+                tabs: tabs,
+                controller: _tabControlor),
+          ),
+          Expanded(
+              child: TabBarView(
+            controller: _tabControlor,
+            children: <Widget>[KnowledgeTreeScreen(), NavigationScreen()],
+          ))
+        ],
+      ),
     );
   }
 }

@@ -19,6 +19,22 @@ class ApiService {
     }
   }
 
+  ///获取首页列表数据,future
+  getHomeArticleListDdata(int _page) async {
+    try {
+      Response response =
+          await dio.get(Apis.HOME_ARTICLE_LIST + "/$_page/json");
+      var statusCode = response.statusCode;
+      if (statusCode == 200) {
+        return response;
+      } else {
+        throw Exception('网络异常：' + response.statusMessage);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   ///获取广场数据
   getSquareData(int _page) async {
     try {
