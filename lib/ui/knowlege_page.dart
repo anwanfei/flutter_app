@@ -16,9 +16,11 @@ class _KnowlegePage extends State<KnowlegePage> with TickerProviderStateMixin {
   List<Tab> tabs = [
     Tab(
       text: '体系',
+//      icon: Icon(Icons.sort),
     ),
     Tab(
       text: '导航',
+//      icon: Icon(Icons.navigation),
     ),
   ];
 

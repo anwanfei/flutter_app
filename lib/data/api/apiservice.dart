@@ -49,4 +49,34 @@ class ApiService {
       print(e);
     }
   }
+
+  ///获取体系数据
+  getKnowledgeTreeData() async {
+    try {
+      Response response = await dio.get(Apis.KNOWLEDGE_TREE_LIST);
+      var statusCode = response.statusCode;
+      if (statusCode == 200) {
+        return response;
+      } else {
+        throw Exception('网络异常：' + response.statusMessage);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  ///获取体系数据
+  getNavigationData() async {
+    try {
+      Response response = await dio.get(Apis.NAVIGATION_LIST);
+      var statusCode = response.statusCode;
+      if (statusCode == 200) {
+        return response;
+      } else {
+        throw Exception('网络异常：' + response.statusMessage);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 }

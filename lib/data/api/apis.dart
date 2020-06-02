@@ -10,4 +10,10 @@ class Apis {
 
   /// 广场列表
   static const String SQUARE_LIST = BASE_HOST + "/user_article/list";
+
+  /// 知识体系
+  static const String KNOWLEDGE_TREE_LIST = BASE_HOST + "/tree/json";
+
+  /// 导航数据列表
+  static const String NAVIGATION_LIST = BASE_HOST + "/navi/json";
 }
