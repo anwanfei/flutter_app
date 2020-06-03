@@ -79,4 +79,37 @@ class ApiService {
       print(e);
     }
   }
+
+  ///获取公众号tab名称
+  getWxTitleData() async {
+    try {
+      Response response = await dio.get(Apis.WX_CHAPTERS_LIST);
+      var statusCode = response.statusCode;
+      if (statusCode == 200) {
+        return response;
+      } else {
+        throw Exception('网络异常' + response.statusMessage);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  ///获取公众号文章列表
+  getWxArticleListData(int page, int id) async {
+    try {
+      Response response =
+          await dio.get(Apis.WX_ARTICLE_LIST + "/$id/$page/json");
+
+      var statusCode = response.statusCode;
+
+      if (statusCode == 200) {
+        return response;
+      } else {
+        throw Exception('网络异常：' + response.statusMessage);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 }
