@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapp/data/api/apiservice.dart';
 import 'package:flutterapp/data/model/article_model.dart';
 import 'package:flutterapp/ui/item_square_screen.dart';
+import 'package:flutterapp/utils/loading_util.dart';
 
 class SquarePage extends StatefulWidget {
   @override
@@ -34,6 +35,7 @@ class _SquarePage extends State<SquarePage> {
 
   @override
   Widget build(BuildContext context) {
+    if (_articleModel.data == null) return LoadingUtil.loading();
     return ListView.builder(
       itemBuilder: itemView,
       controller: _scrollController,

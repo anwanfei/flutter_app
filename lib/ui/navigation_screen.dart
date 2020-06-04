@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/data/api/apiservice.dart';
 import 'package:flutterapp/data/model/navigation_model.dart';
+import 'package:flutterapp/utils/loading_util.dart';
 
 class NavigationScreen extends StatefulWidget {
   @override
@@ -33,6 +34,7 @@ class _NavigationScreen extends State<NavigationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (_navigationModel.data == null) return LoadingUtil.loading();
     return Scaffold(
       body: ListView.builder(
         itemBuilder: itemView,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/data/model/article_model.dart';
+import 'package:flutterapp/ui/webview_screen.dart';
 
 // ignore: must_be_immutable
 class ItemSquareScren extends StatefulWidget {
@@ -20,7 +21,18 @@ class _ItemSquareScrenn extends State<ItemSquareScren> {
     return Card(
       child: InkWell(
         onTap: () {
-          print(articleBean.link);
+          _navigatorNewPage(context, articleBean);
+//          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+//            return WebViewScreen(articleBean.title, articleBean.link);
+//          }));
+//          Navigator.push(context, MaterialPageRoute(builder: (context) {
+//            return WebViewScreen();
+//          }));
+
+//          Navigator.pushAndRemoveUntil(context,
+//              MaterialPageRoute(builder: (context) {
+//            return WebViewScreen();
+//          }), (route) => route == null);
         },
         child: Column(
           children: <Widget>[
@@ -79,5 +91,16 @@ class _ItemSquareScrenn extends State<ItemSquareScren> {
         ),
       ),
     );
+  }
+
+  void _navigatorNewPage(BuildContext context, ArticleBean articleBean) async {
+    final result =
+        await Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return WebViewScreen(articleBean.title, articleBean.link);
+    }));
+
+    Scaffold.of(context).showSnackBar(SnackBar(
+      content: Text("$result"),
+    ));
   }
 }

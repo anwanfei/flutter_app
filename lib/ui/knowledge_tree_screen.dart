@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/data/api/apiservice.dart';
 import 'package:flutterapp/data/model/knowledge_tree_model.dart';
+import 'package:flutterapp/utils/loading_util.dart';
 
 class KnowledgeTreeScreen extends StatefulWidget {
   @override
@@ -34,6 +35,7 @@ class _KnowledgeTreeScreen extends State<KnowledgeTreeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (_knowledgeTreeModel.data == null) return LoadingUtil.loading();
     return Scaffold(
       body: ListView.builder(
         itemBuilder: itemView,
@@ -99,10 +101,10 @@ class _KnowledgeTreeScreen extends State<KnowledgeTreeScreen> {
 //    List<Text> list = [];
     List<Widget> list = [];
     for (var value in children) {
-      list.add(Text(value.name,style: TextStyle(
-        fontSize: 12,
-        color: Colors.grey
-      ),));
+      list.add(Text(
+        value.name,
+        style: TextStyle(fontSize: 12, color: Colors.grey),
+      ));
     }
     return list;
   }

@@ -6,6 +6,7 @@ import 'package:flutterapp/data/api/apiservice.dart';
 import 'package:flutterapp/data/model/article_model.dart';
 import 'package:flutterapp/data/model/banner_model.dart';
 import 'package:flutterapp/ui/item_home_list_screen.dart';
+import 'package:flutterapp/utils/loading_util.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -54,6 +55,8 @@ class _HomePage extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    if (_articleModel.data == null) return LoadingUtil.loading();
     return Scaffold(
       body: ListView.builder(
         itemBuilder: itemView,

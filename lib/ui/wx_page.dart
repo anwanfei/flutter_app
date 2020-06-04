@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapp/data/api/apiservice.dart';
 import 'package:flutterapp/data/model/wx_chapters_model.dart';
 import 'package:flutterapp/ui/wx_article_screen.dart';
+import 'package:flutterapp/utils/loading_util.dart';
 
 class WxPage extends StatefulWidget {
   @override
@@ -41,6 +42,7 @@ class _WxPage extends State<WxPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    if (_wxChaptersModel.data == null) return LoadingUtil.loading();
     _tabController =
         new TabController(length: _wxChaptersModel.data.length, vsync: this);
     return Scaffold(
@@ -51,8 +53,7 @@ class _WxPage extends State<WxPage> with TickerProviderStateMixin {
               color: Colors.red,
               child: TabBar(
                 isScrollable: true,
-                tabs:
-                    _wxChaptersModel.data.map((wXChaptersBean) {
+                tabs: _wxChaptersModel.data.map((wXChaptersBean) {
                   return Tab(
                     text: wXChaptersBean.name,
                   );
@@ -63,12 +64,11 @@ class _WxPage extends State<WxPage> with TickerProviderStateMixin {
             ),
             Expanded(
                 child: Container(
-                  child: TabBarView(
-                    controller: _tabController,
-                    children:
-                    _wxChaptersModel.data.map((wXChaptersBean) {
-                      return WxArticleScreen(wXChaptersBean.id);
-                    }).toList(),
+              child: TabBarView(
+                controller: _tabController,
+                children: _wxChaptersModel.data.map((wXChaptersBean) {
+                  return WxArticleScreen(wXChaptersBean.id);
+                }).toList(),
               ),
             ))
           ],
