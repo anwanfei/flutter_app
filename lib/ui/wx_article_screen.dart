@@ -12,7 +12,7 @@ class WxArticleScreen extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return _WxArticleScrenen(id);
+    return _WxArticleScrenen();
   }
 }
 
@@ -20,7 +20,7 @@ class _WxArticleScrenen extends State<WxArticleScreen> {
   int page = 0;
   int id;
 
-  _WxArticleScrenen(this.id);
+//  _WxArticleScrenen(this.id);
 
   WXArticleModel _articleModel = new WXArticleModel();
   ScrollController _scrollController = ScrollController();
@@ -28,6 +28,8 @@ class _WxArticleScrenen extends State<WxArticleScreen> {
   @override
   void initState() {
     super.initState();
+    id = widget.id;
+
     getWxArticleListData();
   }
 

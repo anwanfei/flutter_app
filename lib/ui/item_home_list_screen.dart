@@ -15,7 +15,7 @@ class ItemHomeListScreen extends StatefulWidget {
 class _ItemHomeListScreen extends State<ItemHomeListScreen> {
   @override
   Widget build(BuildContext context) {
-    var articleBean = this.widget.articleBean;
+    var articleBean = widget.articleBean;
     return InkWell(
       //为了找一个有点击事件容器
       onTap: () {},

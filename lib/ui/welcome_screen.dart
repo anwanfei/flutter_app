@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp/ui/main_screen.dart';
+import 'package:flutterapp/ui/splash_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -15,7 +16,7 @@ class _WelcomeScreen extends State<WelcomeScreen> {
     super.initState();
     Future.delayed(Duration(seconds: 3), () {
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return MainScreen();
+        return SplashScreen();
       }));
     });
   }
